@@ -26,5 +26,6 @@ Route::post("/logout",[AuthController::class,"logout"]);
 
 Route::middleware(['auth.api','log.api'])->group(function () {
     Route::get("/custumers",[CustumersController::class,"get"]);
+    Route::delete("/custumers/{dni}",[CustumersController::class,"delete"])->whereNumber("dni");
 });
 

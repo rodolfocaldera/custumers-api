@@ -17,4 +17,15 @@ class CustumersController extends Controller
         ->get();
         return response()->json([ 'success' => true,'custumers' => $custumers ], Response::HTTP_ACCEPTED); 
     }
+
+    public function delete(Request $request){
+        $dni = $request->dni;
+        $custumerDeleted = Custumers::where("status","Trash")->where("dni",$dni)->exists();
+        if($custumerDeleted){
+            return response()->json([ 'success' => false,'message' => "Registro no existe" ], Response::HTTP_NOT_FOUND); 
+        }
+
+        Custumers::where("dni",$dni)->update(["status"=>"Trash"]);
+        return response()->json([ 'success' => true,'message' => "Registro eliminado correctamente" ], Response::HTTP_ACCEPTED); 
+    }
 }
