@@ -21,7 +21,8 @@ class CustumersController extends Controller
     public function delete(Request $request){
         $dni = $request->dni;
         $custumerDeleted = Custumers::where("status","Trash")->where("dni",$dni)->exists();
-        if($custumerDeleted){
+        $custumerExists = Custumers::where("dni",$dni)->exists();
+        if($custumerDeleted || !$custumerExists){
             return response()->json([ 'success' => false,'message' => "Registro no existe" ], Response::HTTP_NOT_FOUND); 
         }
 

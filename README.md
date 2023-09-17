@@ -57,7 +57,7 @@ Para generar la clave que laravel utiliza para datos sensibles se deberá ejecut
 1. access_token -> token que se generó al momento de ingresar
 
 ### Eliminar custumer
-> /api/custumers
+> /api/custumers/{dni}
 
 ### Método
 1. DELETE
