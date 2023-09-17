@@ -15,11 +15,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-
-        \App\Models\User::factory()->create([
-           'email' => 'test@example.com',
-           'password' => Hash::make("1234")
-        ]);
+       $this->call([
+            RegionSeeder::class,
+            CommunesSeeder::class,
+            CustumersSeeder::class
+       ]);
     }
 }

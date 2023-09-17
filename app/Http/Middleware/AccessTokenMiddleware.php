@@ -19,7 +19,8 @@ class AccessTokenMiddleware
     public function handle(Request $request, Closure $next)
     {
         $authorization = $request->header('Authorization');
-        $accessToken = AccessToken::where('access_token', $authorization)->first();
+        $time = date("Y-m-d H:i:s");
+        $accessToken = AccessToken::where('access_token', $authorization)->where("expires_at",">",$time)->first();
         if (!$accessToken) {
             return response()->json([ 'message' => 'Unauthorized' ], Response::HTTP_UNAUTHORIZED); 
         }
