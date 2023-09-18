@@ -18,6 +18,9 @@ Para generar la clave que laravel utiliza para datos sensibles se deberá ejecut
 > php artisan key:generate
 
 ## Rutas
+### Nota
+El parámetro Authorization deberá ir en la cabecera de la petición
+
 ### Login
 > /api/login
 
@@ -54,7 +57,7 @@ Para generar la clave que laravel utiliza para datos sensibles se deberá ejecut
 1. GET
 
 #### Parámetros
-1. access_token -> token que se generó al momento de ingresar
+1. Authorization -> token que se generó al momento de ingresar
 
 ### Eliminar custumer
 > /api/custumers/{dni}
@@ -63,5 +66,15 @@ Para generar la clave que laravel utiliza para datos sensibles se deberá ejecut
 1. DELETE
 
 #### Parámetros
-1. access_token -> token que se generó al momento de ingresar
+1. Authorization -> token que se generó al momento de ingresar
 2. dni -> número que identifica al registro
+
+### Búsqueda
+> /api/custumers/find/{busqueda}
+
+### Método
+1. GET
+
+#### Parámetros
+1. Authorization -> token que se generó al momento de ingresar
+2. busqueda -> Correo o DNI del registro a buscar

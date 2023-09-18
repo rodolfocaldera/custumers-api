@@ -18,6 +18,19 @@ class CustumersController extends Controller
         return response()->json([ 'success' => true,'custumers' => $custumers ], Response::HTTP_ACCEPTED); 
     }
 
+    public function find(Request $request){
+        $busqueda = $request->busqueda;
+        $custumers = DB::table('custumers')
+        ->join('communes', 'custumers.id_com', '=', 'communes.id')
+        ->join('region', 'custumers.id_reg', '=', 'region.id')
+        ->where("custumers.status","A")
+        ->where('dni', 'LIKE', '%'.$busqueda.'%')
+		->orWhere('email', 'LIKE', '%'.$busqueda.'%')
+        ->select("name","last_name","address","communes.description as commune","region.description as region")
+        ->get();
+        return response()->json([ 'success' => true,'custumers' => $custumers ], Response::HTTP_ACCEPTED); 
+    }
+
     public function delete(Request $request){
         $dni = $request->dni;
         $custumerDeleted = Custumers::where("status","Trash")->where("dni",$dni)->exists();

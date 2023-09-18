@@ -66,5 +66,6 @@ class Kernel extends HttpKernel
         'auth.api' => \App\Http\Middleware\AccessTokenMiddleware::class,
         'user.api' => \App\Http\Middleware\UserMiddleware::class,
         'log.api' => \App\Http\Middleware\LogMiddleware::class,
+        'busqueda.api' => \App\Http\Middleware\BusquedaMiddleware::class,
     ];
 }
