@@ -1,6 +1,6 @@
 # CUSTUMERS API
 ## Requerimientos
-Para utilizar este API solo será necesario tener instalado PHP con la versión para laravel 10, MySQL y composer en la máquina.
+Para utilizar este API solo será necesario tener instalado PHP con la versión para laravel 9.19, MySQL y composer en la máquina.
 Para instalar todo lo necesario se deberá correr el siguiente comando:
 > composer install
 
