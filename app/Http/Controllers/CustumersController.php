@@ -42,4 +42,15 @@ class CustumersController extends Controller
         Custumers::where("dni",$dni)->update(["status"=>"Trash"]);
         return response()->json([ 'success' => true,'message' => "Registro eliminado correctamente" ], Response::HTTP_ACCEPTED); 
     }
+
+    public function save(Request $request){
+        $custumer = new Custumers;
+        foreach($custumer->getFillable() as $field){
+            $custumer->{$field} = $request->{$field};
+        }
+
+        $custumer->date_reg = date("Y-m-d H:i:s");
+        $custumer->save();
+        return response()->json([ 'success' => true,'message' => "Registro creado correctamente" ], Response::HTTP_CREATED);
+    }
 }

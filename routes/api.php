@@ -21,12 +21,13 @@ Route::middleware(['user.api','log.api'])->group(function () {
     Route::post('/register',[UserController::class,"save"]);
 });
 
-Route::post("/login",[AuthController::class,"login"]);
+Route::middleware("log.api")->post("/login",[AuthController::class,"login"]);
 Route::post("/logout",[AuthController::class,"logout"]);
 
 Route::middleware(['auth.api','log.api'])->group(function () {
     Route::get("/custumers",[CustumersController::class,"get"]);
     Route::delete("/custumers/{dni}",[CustumersController::class,"delete"])->whereNumber("dni");
     Route::middleware('busqueda.api')->get("/custumers/find/{busqueda}",[CustumersController::class,"find"]);
+    Route::middleware('registro.api')->post("/custumers",[CustumersController::class,"save"]);
 });
 

@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
         'user.api' => \App\Http\Middleware\UserMiddleware::class,
         'log.api' => \App\Http\Middleware\LogMiddleware::class,
         'busqueda.api' => \App\Http\Middleware\BusquedaMiddleware::class,
+        'registro.api' => \App\Http\Middleware\RegistroMiddleware::class,
     ];
 }

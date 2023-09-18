@@ -1,6 +1,6 @@
 # CUSTUMERS API
 ## Requerimientos
-Para utilizar este API solo será necesario tener instalado PHP y composer en la máquina.
+Para utilizar este API solo será necesario tener instalado PHP con la versión para laravel 10, MySQL y composer en la máquina.
 Para instalar todo lo necesario se deberá correr el siguiente comando:
 > composer install
 
@@ -16,6 +16,12 @@ Para usar el servicio se deberá correr el comando:
 
 Para generar la clave que laravel utiliza para datos sensibles se deberá ejecutar el siguiente comando:
 > php artisan key:generate
+
+Para crear las tablas será necesario ejecutar el siguiente comando:
+> php artisan migrate
+
+Adicionalmente para poblar algunas tablas se podrá ejecutar el comando:
+> php artisan db:seed
 
 ## Rutas
 ### Nota
@@ -78,3 +84,23 @@ El parámetro Authorization deberá ir en la cabecera de la petición
 #### Parámetros
 1. Authorization -> token que se generó al momento de ingresar
 2. busqueda -> Correo o DNI del registro a buscar
+
+### Registro de custumer
+> /api/custumers
+
+### Método
+1. POST
+
+#### Parámetros
+1. Authorization -> token que se generó al momento de ingresar
+2. dni -> formato numérico
+3. email -> formato de correo
+4. id_reg -> formato númerico
+5. id_com -> formato númerico
+6. name -> texto con espacios
+7. last_name -> texto con espacios
+8. address -> formato alfanúmerico con espacios además de los caracteres . , #
+
+#### Nota
+El campo id_reg y id_con deberán tener relación en la tabla communes, además de estar activos en su respectiva tabla
+
