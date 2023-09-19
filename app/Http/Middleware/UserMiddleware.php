@@ -20,7 +20,7 @@ class UserMiddleware
     {
         $validator = Validator::make($request->all(), [
             'email' => 'required|email|unique:users',
-            'password' => 'required'
+            'password' => 'required|alpha_num'
         ]);
 
         if($validator->fails()){

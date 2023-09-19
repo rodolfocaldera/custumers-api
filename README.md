@@ -35,7 +35,7 @@ El parámetro Authorization deberá ir en la cabecera de la petición
 
 #### Parámetros
 1. email -> formato email
-2. password
+2. password -> Formato alfanumérico
 
 ### Logout
 > /api/logout
