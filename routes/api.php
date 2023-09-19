@@ -21,7 +21,7 @@ Route::middleware(['user.api','log.api'])->group(function () {
     Route::post('/register',[UserController::class,"save"]);
 });
 
-Route::middleware("log.api")->post("/login",[AuthController::class,"login"]);
+Route::middleware(["log.api",'user.api'])->post("/login",[AuthController::class,"login"]);
 Route::post("/logout",[AuthController::class,"logout"]);
 
 Route::middleware(['auth.api','log.api'])->group(function () {

@@ -18,8 +18,10 @@ class UserMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
+        $uri = $request->path(); 
+        $email_validate = $uri == "api/login" ? 'required|email' : 'required|email|unique:users';
         $validator = Validator::make($request->all(), [
-            'email' => 'required|email|unique:users',
+            'email' => $email_validate,
             'password' => 'required|alpha_num'
         ]);
 

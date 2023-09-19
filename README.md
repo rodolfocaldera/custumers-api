@@ -54,7 +54,7 @@ El parámetro Authorization deberá ir en la cabecera de la petición
 
 #### Parámetros
 1. email -> este deberá ser único en el sistema
-2. password 
+2. password -> Formato alfanumérico
 
 ### Lista de custumers
 > /api/custumers
